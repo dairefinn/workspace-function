@@ -3,12 +3,22 @@ Function to open code workspaces easily.
 
 ## Install
 1. Store all .code-workspace files in the same directory
-2. Put the start-workspace.sh file in that directory
-3. Add the script found in bashrc or below to your .bashrc, .bash_profile, .zshrc, etc.
+2. Modify the path in the function below or in bashrc to point to that directory
+3. Put the function in  .bashrc, .bash_profile, .zshrc, etc.
 4. Restart terminal session if already running
 5. Type "workspace WORKSPACE_NAME_HERE" to open it
 
 ## Function
     workspace() {
-        cd "$HOME/Repos/workspaces/" && sh "start-workspace.sh" "$1"
+        cd "$HOME/Repos/workspaces/" && (
+            # Arguments
+            WORKSPACES="$HOME/Repos/workspaces"
+
+            # Check if file exists
+            if test -f "$WORKSPACES/$1.code-workspace"; then
+                code "$WORKSPACES/$1.code-workspace" && exit
+            else
+                echo "workspace $1 does not exist"
+            fi
+        )
     }
