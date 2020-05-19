@@ -6,7 +6,7 @@ Function to open code workspaces easily.
 2. Put the start-workspace.sh file in that directory
 3. Add the script found in bashrc or below to your .bashrc, .bash_profile, .zshrc, etc.
 4. Restart terminal session if already running
-5. Type "workspace <<WORKSPACE NAME HERE>>" to open it
+5. Type "workspace WORKSPACE_NAME_HERE" to open it
 
 ## Function
     workspace() {
