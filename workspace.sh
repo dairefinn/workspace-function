@@ -1,9 +1,16 @@
-WORKSPACES_DIR=$HOME/Repos/Workspaces
-FILE_EXTENSION=.code-workspace
+#!/bin/bash
+
+# Load config file
+source ./config.cfg
+
+# Get search argument
 SEARCH_ARG=$1
 
 listWorkspaces() {
-    for FILEPATH in $WORKSPACES_DIR/*$FILE_EXTENSION;
+    local FILES_LIST=$WORKSPACES_DIR/*
+    pwd
+    # $FILE_EXTENSION
+    for FILEPATH in $FILES_LIST;
     do
         FILEPATH=${FILEPATH##*/}
         FILEPATH=${FILEPATH%$FILE_EXTENSION}
@@ -32,6 +39,7 @@ workspaceNotFound() {
 }
 
 tryOpenWorkspace() {
+    # TODO: Check if argument is given
     local FILE=$1
 
     echo "Checking if workspace $WORKSPACES_DIR/$FILE$FILE_EXTENSION exists"
