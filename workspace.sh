@@ -7,8 +7,8 @@ source ./config.cfg
 SEARCH_ARG=$1
 
 listWorkspaces() {
+    # TODO: Different message if no files
     local FILES_LIST=$WORKSPACES_DIR/*
-    pwd
     # $FILE_EXTENSION
     for FILEPATH in $FILES_LIST;
     do
